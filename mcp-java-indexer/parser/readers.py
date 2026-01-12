@@ -32,7 +32,7 @@ def read_range(file_path: str, start_line: int, end_line: int, options: Optional
             line_text = f"{idx + 1}: {line_text}"
         projected = total_chars + len(line_text) + 1
         if projected > max_chars:
-            output_lines.append("... [truncated]")
+            output_lines.append(f"... [truncated at {max_chars} chars]")
             break
         output_lines.append(line_text)
         total_chars = projected
