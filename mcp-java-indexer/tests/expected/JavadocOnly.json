@@ -1,0 +1,84 @@
+{
+  "filePath": "tests/fixtures/JavadocOnly.java",
+  "language": "java",
+  "hash": "db42674f0f137b1d4461e51e56aeae88c0a6d523",
+  "lineCount": 13,
+  "classes": [
+    {
+      "symbolId": "Class#com.example.docs.JavadocOnly|start:3|end:13",
+      "kind": "class",
+      "name": "JavadocOnly",
+      "qualifiedName": "com.example.docs.JavadocOnly",
+      "modifiers": [
+        "public"
+      ],
+      "extends": null,
+      "implements": [],
+      "startLine": 3,
+      "endLine": 13,
+      "javadoc": {
+        "present": false,
+        "startLine": null,
+        "endLine": null,
+        "lineCount": 0,
+        "preview": null
+      },
+      "fields": [
+        {
+          "symbolId": "Field#com.example.docs.JavadocOnly#name|start:12|end:12",
+          "kind": "field",
+          "name": "name",
+          "typeText": "String",
+          "modifiers": [
+            "protected"
+          ],
+          "startLine": 12,
+          "endLine": 12,
+          "javadoc": {
+            "present": true,
+            "startLine": 11,
+            "endLine": 11,
+            "lineCount": 1,
+            "preview": null
+          }
+        }
+      ],
+      "constructors": [],
+      "methods": [
+        {
+          "symbolId": "Method#com.example.docs.JavadocOnly#add(int,int):int|start:9|end:9",
+          "kind": "method",
+          "name": "add",
+          "returnTypeText": "int",
+          "modifiers": [
+            "public"
+          ],
+          "typeParamsText": null,
+          "params": [
+            {
+              "name": "a",
+              "typeText": "int"
+            },
+            {
+              "name": "b",
+              "typeText": "int"
+            }
+          ],
+          "throws": [],
+          "startLine": 9,
+          "endLine": 9,
+          "javadoc": {
+            "present": true,
+            "startLine": 4,
+            "endLine": 8,
+            "lineCount": 5,
+            "preview": null
+          },
+          "signatureText": "public int add(int a, int b)"
+        }
+      ],
+      "innerClasses": []
+    }
+  ],
+  "errors": []
+}

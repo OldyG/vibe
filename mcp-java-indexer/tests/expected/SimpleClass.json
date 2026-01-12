@@ -1,0 +1,151 @@
+{
+  "filePath": "tests/fixtures/SimpleClass.java",
+  "language": "java",
+  "hash": "0ed87bbc5b36293e116172ef9f7500eea4cabac8",
+  "lineCount": 19,
+  "classes": [
+    {
+      "symbolId": "Class#com.example.SimpleClass|start:3|end:19",
+      "kind": "class",
+      "name": "SimpleClass",
+      "qualifiedName": "com.example.SimpleClass",
+      "modifiers": [
+        "public"
+      ],
+      "extends": null,
+      "implements": [],
+      "startLine": 3,
+      "endLine": 19,
+      "javadoc": {
+        "present": false,
+        "startLine": null,
+        "endLine": null,
+        "lineCount": 0,
+        "preview": null
+      },
+      "fields": [
+        {
+          "symbolId": "Field#com.example.SimpleClass#count|start:5|end:5",
+          "kind": "field",
+          "name": "count",
+          "typeText": "int",
+          "modifiers": [
+            "private"
+          ],
+          "startLine": 5,
+          "endLine": 5,
+          "javadoc": {
+            "present": true,
+            "startLine": 4,
+            "endLine": 4,
+            "lineCount": 1,
+            "preview": null
+          }
+        }
+      ],
+      "constructors": [
+        {
+          "symbolId": "Ctor#com.example.SimpleClass#SimpleClass()|start:7|end:9",
+          "kind": "constructor",
+          "name": "SimpleClass",
+          "modifiers": [
+            "public"
+          ],
+          "params": [],
+          "throws": [],
+          "startLine": 7,
+          "endLine": 9,
+          "javadoc": {
+            "present": false,
+            "startLine": null,
+            "endLine": null,
+            "lineCount": 0,
+            "preview": null
+          },
+          "signatureText": "public SimpleClass()"
+        }
+      ],
+      "methods": [
+        {
+          "symbolId": "Method#com.example.SimpleClass#doWork(int,String):String|start:12|end:14",
+          "kind": "method",
+          "name": "doWork",
+          "returnTypeText": "String",
+          "modifiers": [
+            "public"
+          ],
+          "typeParamsText": null,
+          "params": [
+            {
+              "name": "a",
+              "typeText": "int"
+            },
+            {
+              "name": "b",
+              "typeText": "String"
+            }
+          ],
+          "throws": [
+            "Exception"
+          ],
+          "startLine": 12,
+          "endLine": 14,
+          "javadoc": {
+            "present": true,
+            "startLine": 11,
+            "endLine": 11,
+            "lineCount": 1,
+            "preview": null
+          },
+          "signatureText": "public String doWork(int a, String b) throws Exception"
+        }
+      ],
+      "innerClasses": [
+        {
+          "symbolId": "Class#com.example.SimpleClass.Inner|start:16|end:18",
+          "kind": "class",
+          "name": "Inner",
+          "qualifiedName": "com.example.SimpleClass.Inner",
+          "modifiers": [],
+          "extends": null,
+          "implements": [],
+          "startLine": 16,
+          "endLine": 18,
+          "javadoc": {
+            "present": false,
+            "startLine": null,
+            "endLine": null,
+            "lineCount": 0,
+            "preview": null
+          },
+          "fields": [],
+          "constructors": [],
+          "methods": [
+            {
+              "symbolId": "Method#com.example.SimpleClass.Inner#innerMethod():void|start:17|end:17",
+              "kind": "method",
+              "name": "innerMethod",
+              "returnTypeText": "void",
+              "modifiers": [],
+              "typeParamsText": null,
+              "params": [],
+              "throws": [],
+              "startLine": 17,
+              "endLine": 17,
+              "javadoc": {
+                "present": false,
+                "startLine": null,
+                "endLine": null,
+                "lineCount": 0,
+                "preview": null
+              },
+              "signatureText": "void innerMethod()"
+            }
+          ],
+          "innerClasses": []
+        }
+      ]
+    }
+  ],
+  "errors": []
+}

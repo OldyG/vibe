@@ -1,0 +1,125 @@
+{
+  "filePath": "tests/fixtures/AnnotationsAndOverloads.java",
+  "language": "java",
+  "hash": "5fa5097c035e7f4328010e354f62c1f57b433e55",
+  "lineCount": 20,
+  "classes": [
+    {
+      "symbolId": "Class#com.example.AnnotationsAndOverloads|start:3|end:15",
+      "kind": "class",
+      "name": "AnnotationsAndOverloads",
+      "qualifiedName": "com.example.AnnotationsAndOverloads",
+      "modifiers": [
+        "public"
+      ],
+      "extends": null,
+      "implements": [],
+      "startLine": 3,
+      "endLine": 15,
+      "javadoc": {
+        "present": false,
+        "startLine": null,
+        "endLine": null,
+        "lineCount": 0,
+        "preview": null
+      },
+      "fields": [
+        {
+          "symbolId": "Field#com.example.AnnotationsAndOverloads#value|start:14|end:14",
+          "kind": "field",
+          "name": "value",
+          "typeText": "int",
+          "modifiers": [
+            "protected",
+            "final"
+          ],
+          "startLine": 14,
+          "endLine": 14,
+          "javadoc": {
+            "present": false,
+            "startLine": null,
+            "endLine": null,
+            "lineCount": 0,
+            "preview": null
+          }
+        }
+      ],
+      "constructors": [],
+      "methods": [
+        {
+          "symbolId": "Method#com.example.AnnotationsAndOverloads#doThing():void|start:4|end:5",
+          "kind": "method",
+          "name": "doThing",
+          "returnTypeText": "void",
+          "modifiers": [
+            "public"
+          ],
+          "typeParamsText": null,
+          "params": [],
+          "throws": [],
+          "startLine": 4,
+          "endLine": 5,
+          "javadoc": {
+            "present": false,
+            "startLine": null,
+            "endLine": null,
+            "lineCount": 0,
+            "preview": null
+          },
+          "signatureText": "@Deprecated public void doThing()"
+        },
+        {
+          "symbolId": "Method#com.example.AnnotationsAndOverloads#doThing(int):void|start:7|end:8",
+          "kind": "method",
+          "name": "doThing",
+          "returnTypeText": "void",
+          "modifiers": [
+            "public"
+          ],
+          "typeParamsText": null,
+          "params": [
+            {
+              "name": "a",
+              "typeText": "int"
+            }
+          ],
+          "throws": [],
+          "startLine": 7,
+          "endLine": 8,
+          "javadoc": {
+            "present": false,
+            "startLine": null,
+            "endLine": null,
+            "lineCount": 0,
+            "preview": null
+          },
+          "signatureText": "@Deprecated public void doThing(int a)"
+        }
+      ],
+      "innerClasses": []
+    },
+    {
+      "symbolId": "Class#com.example.MyAnno|start:17|end:20",
+      "kind": "annotation",
+      "name": "MyAnno",
+      "qualifiedName": "com.example.MyAnno",
+      "modifiers": [],
+      "extends": null,
+      "implements": [],
+      "startLine": 17,
+      "endLine": 20,
+      "javadoc": {
+        "present": false,
+        "startLine": null,
+        "endLine": null,
+        "lineCount": 0,
+        "preview": null
+      },
+      "fields": [],
+      "constructors": [],
+      "methods": [],
+      "innerClasses": []
+    }
+  ],
+  "errors": []
+}

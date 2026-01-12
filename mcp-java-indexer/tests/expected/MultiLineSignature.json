@@ -1,0 +1,68 @@
+{
+  "filePath": "tests/fixtures/MultiLineSignature.java",
+  "language": "java",
+  "hash": "30434a72b4bdcfc73f8bb5f187b59531a075fa8b",
+  "lineCount": 11,
+  "classes": [
+    {
+      "symbolId": "Class#com.example.multi.MultiLineSignature|start:3|end:11",
+      "kind": "class",
+      "name": "MultiLineSignature",
+      "qualifiedName": "com.example.multi.MultiLineSignature",
+      "modifiers": [
+        "public"
+      ],
+      "extends": null,
+      "implements": [],
+      "startLine": 3,
+      "endLine": 11,
+      "javadoc": {
+        "present": false,
+        "startLine": null,
+        "endLine": null,
+        "lineCount": 0,
+        "preview": null
+      },
+      "fields": [],
+      "constructors": [],
+      "methods": [
+        {
+          "symbolId": "Method#com.example.multi.MultiLineSignature#sortAndFilter(java.util.List<T>,int):java.util.List<T>|start:4|end:10",
+          "kind": "method",
+          "name": "sortAndFilter",
+          "returnTypeText": "java.util.List<T>",
+          "modifiers": [
+            "public"
+          ],
+          "typeParamsText": "<T extends Comparable<T>>",
+          "params": [
+            {
+              "name": "input",
+              "typeText": "java.util.List<T>"
+            },
+            {
+              "name": "limit",
+              "typeText": "int"
+            }
+          ],
+          "throws": [
+            "java.io.IOException",
+            "IllegalArgumentException"
+          ],
+          "startLine": 4,
+          "endLine": 10,
+          "javadoc": {
+            "present": false,
+            "startLine": null,
+            "endLine": null,
+            "lineCount": 0,
+            "preview": null
+          },
+          "signatureText": "public <T extends Comparable<T>> java.util.List<T> sortAndFilter( java.util.List<T> input, int limit ) throws java.io.IOException, IllegalArgumentException"
+        }
+      ],
+      "innerClasses": []
+    }
+  ],
+  "errors": []
+}

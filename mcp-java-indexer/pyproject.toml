@@ -1,0 +1,26 @@
+[build-system]
+requires = ["setuptools>=69.0", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "mcp-java-indexer"
+version = "0.1.0"
+description = "MCP server that indexes Java symbols with Tree-sitter"
+readme = "README.md"
+requires-python = ">=3.10"
+license = { text = "MIT" }
+
+dependencies = [
+  "mcp>=1.2.0",
+  "tree-sitter>=0.23.0",
+  "tree_sitter_java>=0.23.0"
+]
+
+[project.optional-dependencies]
+dev = [
+  "pytest>=8.0.0"
+]
+
+[project.scripts]
+mcp-java-index = "cli.main:main"
+mcp-java-index-server = "mcp_server.server:main"

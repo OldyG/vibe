@@ -1,0 +1,187 @@
+{
+  "filePath": "tests/fixtures/RecordEnumInterface.java",
+  "language": "java",
+  "hash": "3356bce80c257abc741006ac035d4bae6326914c",
+  "lineCount": 26,
+  "classes": [
+    {
+      "symbolId": "Class#com.example.types.Person|start:3|end:13",
+      "kind": "record",
+      "name": "Person",
+      "qualifiedName": "com.example.types.Person",
+      "modifiers": [
+        "public"
+      ],
+      "extends": null,
+      "implements": [],
+      "startLine": 3,
+      "endLine": 13,
+      "javadoc": {
+        "present": false,
+        "startLine": null,
+        "endLine": null,
+        "lineCount": 0,
+        "preview": null
+      },
+      "fields": [],
+      "constructors": [
+        {
+          "symbolId": "Ctor#com.example.types.Person#Person()|start:4|end:8",
+          "kind": "constructor",
+          "name": "Person",
+          "modifiers": [
+            "public"
+          ],
+          "params": [],
+          "throws": [],
+          "startLine": 4,
+          "endLine": 8,
+          "javadoc": {
+            "present": false,
+            "startLine": null,
+            "endLine": null,
+            "lineCount": 0,
+            "preview": null
+          },
+          "signatureText": "public Person"
+        }
+      ],
+      "methods": [
+        {
+          "symbolId": "Method#com.example.types.Person#label():String|start:10|end:12",
+          "kind": "method",
+          "name": "label",
+          "returnTypeText": "String",
+          "modifiers": [
+            "public"
+          ],
+          "typeParamsText": null,
+          "params": [],
+          "throws": [],
+          "startLine": 10,
+          "endLine": 12,
+          "javadoc": {
+            "present": false,
+            "startLine": null,
+            "endLine": null,
+            "lineCount": 0,
+            "preview": null
+          },
+          "signatureText": "public String label()"
+        }
+      ],
+      "innerClasses": []
+    },
+    {
+      "symbolId": "Class#com.example.types.Status|start:15|end:21",
+      "kind": "enum",
+      "name": "Status",
+      "qualifiedName": "com.example.types.Status",
+      "modifiers": [],
+      "extends": null,
+      "implements": [],
+      "startLine": 15,
+      "endLine": 21,
+      "javadoc": {
+        "present": false,
+        "startLine": null,
+        "endLine": null,
+        "lineCount": 0,
+        "preview": null
+      },
+      "fields": [],
+      "constructors": [],
+      "methods": [
+        {
+          "symbolId": "Method#com.example.types.Status#isOk():boolean|start:18|end:20",
+          "kind": "method",
+          "name": "isOk",
+          "returnTypeText": "boolean",
+          "modifiers": [
+            "public"
+          ],
+          "typeParamsText": null,
+          "params": [],
+          "throws": [],
+          "startLine": 18,
+          "endLine": 20,
+          "javadoc": {
+            "present": false,
+            "startLine": null,
+            "endLine": null,
+            "lineCount": 0,
+            "preview": null
+          },
+          "signatureText": "public boolean isOk()"
+        }
+      ],
+      "innerClasses": []
+    },
+    {
+      "symbolId": "Class#com.example.types.Worker|start:23|end:26",
+      "kind": "interface",
+      "name": "Worker",
+      "qualifiedName": "com.example.types.Worker",
+      "modifiers": [],
+      "extends": null,
+      "implements": [],
+      "startLine": 23,
+      "endLine": 26,
+      "javadoc": {
+        "present": false,
+        "startLine": null,
+        "endLine": null,
+        "lineCount": 0,
+        "preview": null
+      },
+      "fields": [],
+      "constructors": [],
+      "methods": [
+        {
+          "symbolId": "Method#com.example.types.Worker#run():void|start:24|end:24",
+          "kind": "method",
+          "name": "run",
+          "returnTypeText": "void",
+          "modifiers": [],
+          "typeParamsText": null,
+          "params": [],
+          "throws": [],
+          "startLine": 24,
+          "endLine": 24,
+          "javadoc": {
+            "present": false,
+            "startLine": null,
+            "endLine": null,
+            "lineCount": 0,
+            "preview": null
+          },
+          "signatureText": "void run()"
+        },
+        {
+          "symbolId": "Method#com.example.types.Worker#priority():int|start:25|end:25",
+          "kind": "method",
+          "name": "priority",
+          "returnTypeText": "int",
+          "modifiers": [
+            "default"
+          ],
+          "typeParamsText": null,
+          "params": [],
+          "throws": [],
+          "startLine": 25,
+          "endLine": 25,
+          "javadoc": {
+            "present": false,
+            "startLine": null,
+            "endLine": null,
+            "lineCount": 0,
+            "preview": null
+          },
+          "signatureText": "default int priority()"
+        }
+      ],
+      "innerClasses": []
+    }
+  ],
+  "errors": []
+}

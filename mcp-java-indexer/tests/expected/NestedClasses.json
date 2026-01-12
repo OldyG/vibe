@@ -1,0 +1,106 @@
+{
+  "filePath": "tests/fixtures/NestedClasses.java",
+  "language": "java",
+  "hash": "ba8f42f0d4b3821fe4695463425eeef770389201",
+  "lineCount": 9,
+  "classes": [
+    {
+      "symbolId": "Class#com.example.nested.Outer|start:3|end:9",
+      "kind": "class",
+      "name": "Outer",
+      "qualifiedName": "com.example.nested.Outer",
+      "modifiers": [
+        "public"
+      ],
+      "extends": null,
+      "implements": [],
+      "startLine": 3,
+      "endLine": 9,
+      "javadoc": {
+        "present": false,
+        "startLine": null,
+        "endLine": null,
+        "lineCount": 0,
+        "preview": null
+      },
+      "fields": [],
+      "constructors": [],
+      "methods": [],
+      "innerClasses": [
+        {
+          "symbolId": "Class#com.example.nested.Outer.Inner|start:4|end:8",
+          "kind": "class",
+          "name": "Inner",
+          "qualifiedName": "com.example.nested.Outer.Inner",
+          "modifiers": [
+            "public"
+          ],
+          "extends": null,
+          "implements": [],
+          "startLine": 4,
+          "endLine": 8,
+          "javadoc": {
+            "present": false,
+            "startLine": null,
+            "endLine": null,
+            "lineCount": 0,
+            "preview": null
+          },
+          "fields": [],
+          "constructors": [],
+          "methods": [],
+          "innerClasses": [
+            {
+              "symbolId": "Class#com.example.nested.Outer.Inner.DeepInner|start:5|end:7",
+              "kind": "class",
+              "name": "DeepInner",
+              "qualifiedName": "com.example.nested.Outer.Inner.DeepInner",
+              "modifiers": [
+                "public"
+              ],
+              "extends": null,
+              "implements": [],
+              "startLine": 5,
+              "endLine": 7,
+              "javadoc": {
+                "present": false,
+                "startLine": null,
+                "endLine": null,
+                "lineCount": 0,
+                "preview": null
+              },
+              "fields": [],
+              "constructors": [],
+              "methods": [
+                {
+                  "symbolId": "Method#com.example.nested.Outer.Inner.DeepInner#deepMethod():void|start:6|end:6",
+                  "kind": "method",
+                  "name": "deepMethod",
+                  "returnTypeText": "void",
+                  "modifiers": [
+                    "public"
+                  ],
+                  "typeParamsText": null,
+                  "params": [],
+                  "throws": [],
+                  "startLine": 6,
+                  "endLine": 6,
+                  "javadoc": {
+                    "present": false,
+                    "startLine": null,
+                    "endLine": null,
+                    "lineCount": 0,
+                    "preview": null
+                  },
+                  "signatureText": "public void deepMethod()"
+                }
+              ],
+              "innerClasses": []
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "errors": []
+}
