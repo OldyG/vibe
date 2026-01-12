@@ -1,27 +1,27 @@
 # MCP Java Indexer
 
-MCP server that pre-indexes Java source files and exposes compact symbol metadata plus efficient range reads for LLM code navigation.
+Java 소스 파일을 미리 인덱싱하고, LLM 코드 탐색을 위한 간결한 심볼 메타데이터와 효율적인 범위 읽기를 제공하는 MCP 서버입니다.
 
-## Why Python + Tree-sitter
-Tree-sitter provides accurate AST ranges and good performance without a full compiler, and Python keeps the implementation light and cross-platform.
+## Python + Tree-sitter를 선택한 이유
+Tree-sitter는 전체 컴파일러 없이도 정확한 AST 범위와 우수한 성능을 제공하며, Python은 구현을 가볍고 크로스 플랫폼으로 유지합니다.
 
-## Install
+## 설치
 ```powershell
 python -m venv .venv
 .\.venv\Scripts\Activate.ps1
 pip install -r requirements.txt
 ```
 
-## Run MCP server
+## MCP 서버 실행
 ```powershell
 python -m mcp_server.server
 ```
 
-## MCP server connection (stdio)
-This server uses MCP stdio transport (no HTTP listener). Configure your MCP client to launch the process.
+## MCP 서버 연결 (stdio)
+이 서버는 MCP stdio 전송을 사용합니다 (HTTP 리스너 없음). 프로세스를 시작하도록 MCP 클라이언트를 구성하세요.
 
-### Cursor example
-Create or update `~/.cursor/mcp.json`:
+### Cursor 예제
+`~/.cursor/mcp.json`을 생성하거나 업데이트하세요:
 ```json
 {
   "mcpServers": {
@@ -37,8 +37,8 @@ Create or update `~/.cursor/mcp.json`:
 }
 ```
 
-### Claude Desktop example
-Update `claude_desktop_config.json`:
+### Claude Desktop 예제
+`claude_desktop_config.json`을 업데이트하세요:
 ```json
 {
   "mcpServers": {
@@ -54,16 +54,16 @@ Update `claude_desktop_config.json`:
 }
 ```
 
-## CLI (debug)
+## CLI (디버그)
 ```powershell
 mcp-java-index index tests\fixtures\SimpleClass.java
 mcp-java-index range tests\fixtures\SimpleClass.java 1 20
 mcp-java-index find --root . --query doWork
 ```
 
-## MCP tools
+## MCP 도구
 ### java_index
-Input:
+입력:
 ```json
 {
   "filePath": "tests/fixtures/SimpleClass.java",
@@ -77,7 +77,7 @@ Input:
   }
 }
 ```
-Output (truncated):
+출력 (일부 생략):
 ```json
 {
   "filePath": "tests/fixtures/SimpleClass.java",
@@ -118,7 +118,7 @@ Output (truncated):
 ```
 
 ### java_read_range
-Input:
+입력:
 ```json
 {
   "filePath": "tests/fixtures/SimpleClass.java",
@@ -129,7 +129,7 @@ Input:
 ```
 
 ### java_read_javadoc
-Input:
+입력:
 ```json
 {
   "filePath": "tests/fixtures/JavadocOnly.java",
@@ -138,7 +138,7 @@ Input:
 ```
 
 ### java_find_symbol
-Input:
+입력:
 ```json
 {
   "rootDir": ".",
@@ -147,29 +147,29 @@ Input:
 }
 ```
 
-## Cache
-- Cache directory: `.mcp-java-index-cache/` in the current working directory.
-- Override with `MCP_JAVA_INDEX_CACHE_ROOT` environment variable.
+## 캐시
+- 캐시 디렉토리: 현재 작업 디렉토리의 `.mcp-java-index-cache/`
+- `MCP_JAVA_INDEX_CACHE_ROOT` 환경 변수로 재정의 가능합니다.
 
-## Javadoc matching rules
-- Only `/** ... */` blocks are considered.
-- The block must be immediately above the symbol's first modifier/annotation line (blank lines allowed).
-- Any other non-empty line between the block and that first modifier/annotation line breaks the match.
-- Annotations are treated as modifiers; a Javadoc block directly above the first annotation is attached.
-- Single-line Javadoc on the same line as the symbol is not detected.
+## Javadoc 매칭 규칙
+- `/** ... */` 블록만 고려됩니다.
+- 블록은 심볼의 첫 번째 수정자/어노테이션 줄 바로 위에 있어야 합니다 (빈 줄 허용).
+- 블록과 첫 번째 수정자/어노테이션 줄 사이의 다른 비어있지 않은 줄이 있으면 매칭이 깨집니다.
+- 어노테이션은 수정자로 취급됩니다. 첫 번째 어노테이션 바로 위의 Javadoc 블록이 연결됩니다.
+- 심볼과 같은 줄에 있는 한 줄짜리 Javadoc은 감지되지 않습니다.
 
-## Tests
+## 테스트
 ```powershell
 pip install -r requirements-dev.txt
 pytest
 ```
 
-## Limitations
-- No semantic type resolution or full Java compilation.
-- Interface `extends` lists are returned as a comma-delimited string in `extends`.
-- Symbol IDs are stable for unchanged files but will change if line numbers shift.
+## 제한사항
+- 의미론적 타입 해석이나 전체 Java 컴파일이 없습니다.
+- 인터페이스 `extends` 목록은 `extends`에 쉼표로 구분된 문자열로 반환됩니다.
+- 심볼 ID는 변경되지 않은 파일에 대해 안정적이지만, 줄 번호가 변경되면 바뀝니다.
 
-## Future work
-- Richer type extraction and better interface `extends` modeling.
-- Call graph support and cross-file references.
-- Performance improvements for very large repos.
+## 향후 작업
+- 더 풍부한 타입 추출 및 더 나은 인터페이스 `extends` 모델링.
+- 호출 그래프 지원 및 파일 간 참조.
+- 매우 큰 저장소에 대한 성능 개선.
