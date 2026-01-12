@@ -19,6 +19,8 @@ def test_snapshots():
         "RecordEnumInterface",
         "MultiLineSignature",
         "JavadocOnly",
+        "JavadocWithAnnotation",
+        "InnerClassJavadoc",
     ]
     for base in fixtures:
         file_path = fixture_path(f"{base}.java").as_posix()

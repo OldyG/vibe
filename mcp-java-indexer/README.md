@@ -17,6 +17,43 @@ pip install -r requirements.txt
 python -m mcp_server.server
 ```
 
+## MCP server connection (stdio)
+This server uses MCP stdio transport (no HTTP listener). Configure your MCP client to launch the process.
+
+### Cursor example
+Create or update `~/.cursor/mcp.json`:
+```json
+{
+  "mcpServers": {
+    "mcp-java-indexer": {
+      "command": "python",
+      "args": ["-m", "mcp_server.server"],
+      "cwd": "C:\\path\\to\\mcp-java-indexer",
+      "env": {
+        "MCP_JAVA_INDEX_CACHE_ROOT": "C:\\path\\to\\mcp-cache"
+      }
+    }
+  }
+}
+```
+
+### Claude Desktop example
+Update `claude_desktop_config.json`:
+```json
+{
+  "mcpServers": {
+    "mcp-java-indexer": {
+      "command": "python",
+      "args": ["-m", "mcp_server.server"],
+      "cwd": "C:\\path\\to\\mcp-java-indexer",
+      "env": {
+        "MCP_JAVA_INDEX_CACHE_ROOT": "C:\\path\\to\\mcp-cache"
+      }
+    }
+  }
+}
+```
+
 ## CLI (debug)
 ```powershell
 mcp-java-index index tests\fixtures\SimpleClass.java
@@ -113,6 +150,13 @@ Input:
 ## Cache
 - Cache directory: `.mcp-java-index-cache/` in the current working directory.
 - Override with `MCP_JAVA_INDEX_CACHE_ROOT` environment variable.
+
+## Javadoc matching rules
+- Only `/** ... */` blocks are considered.
+- The block must be immediately above the symbol's first modifier/annotation line (blank lines allowed).
+- Any other non-empty line between the block and that first modifier/annotation line breaks the match.
+- Annotations are treated as modifiers; a Javadoc block directly above the first annotation is attached.
+- Single-line Javadoc on the same line as the symbol is not detected.
 
 ## Tests
 ```powershell

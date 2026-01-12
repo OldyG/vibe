@@ -1,0 +1,81 @@
+{
+  "filePath": "tests/fixtures/InnerClassJavadoc.java",
+  "language": "java",
+  "hash": "7b12854ecb669f0626837cdf7ba97f179a164dfd",
+  "lineCount": 13,
+  "classes": [
+    {
+      "symbolId": "Class#com.example.docs.OuterWithInnerDoc|start:3|end:13",
+      "kind": "class",
+      "name": "OuterWithInnerDoc",
+      "qualifiedName": "com.example.docs.OuterWithInnerDoc",
+      "modifiers": [
+        "public"
+      ],
+      "extends": null,
+      "implements": [],
+      "startLine": 3,
+      "endLine": 13,
+      "javadoc": {
+        "present": false,
+        "startLine": null,
+        "endLine": null,
+        "lineCount": 0,
+        "preview": null
+      },
+      "fields": [],
+      "constructors": [],
+      "methods": [],
+      "innerClasses": [
+        {
+          "symbolId": "Class#com.example.docs.OuterWithInnerDoc.Inner|start:7|end:12",
+          "kind": "class",
+          "name": "Inner",
+          "qualifiedName": "com.example.docs.OuterWithInnerDoc.Inner",
+          "modifiers": [
+            "public"
+          ],
+          "extends": null,
+          "implements": [],
+          "startLine": 7,
+          "endLine": 12,
+          "javadoc": {
+            "present": true,
+            "startLine": 4,
+            "endLine": 6,
+            "lineCount": 3,
+            "preview": null
+          },
+          "fields": [],
+          "constructors": [],
+          "methods": [
+            {
+              "symbolId": "Method#com.example.docs.OuterWithInnerDoc.Inner#innerMethod():void|start:11|end:11",
+              "kind": "method",
+              "name": "innerMethod",
+              "returnTypeText": "void",
+              "modifiers": [
+                "public"
+              ],
+              "typeParamsText": null,
+              "params": [],
+              "throws": [],
+              "startLine": 11,
+              "endLine": 11,
+              "javadoc": {
+                "present": true,
+                "startLine": 8,
+                "endLine": 10,
+                "lineCount": 3,
+                "preview": null
+              },
+              "signatureText": "public void innerMethod()"
+            }
+          ],
+          "innerClasses": []
+        }
+      ]
+    }
+  ],
+  "errors": []
+}

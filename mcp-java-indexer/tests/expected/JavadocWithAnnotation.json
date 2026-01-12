@@ -1,0 +1,75 @@
+{
+  "filePath": "tests/fixtures/JavadocWithAnnotation.java",
+  "language": "java",
+  "hash": "bf7bc492733af3617871a278d7d858f7c066cff5",
+  "lineCount": 15,
+  "classes": [
+    {
+      "symbolId": "Class#com.example.docs.JavadocWithAnnotation|start:3|end:15",
+      "kind": "class",
+      "name": "JavadocWithAnnotation",
+      "qualifiedName": "com.example.docs.JavadocWithAnnotation",
+      "modifiers": [
+        "public"
+      ],
+      "extends": null,
+      "implements": [],
+      "startLine": 3,
+      "endLine": 15,
+      "javadoc": {
+        "present": false,
+        "startLine": null,
+        "endLine": null,
+        "lineCount": 0,
+        "preview": null
+      },
+      "fields": [
+        {
+          "symbolId": "Field#com.example.docs.JavadocWithAnnotation#name|start:8|end:8",
+          "kind": "field",
+          "name": "name",
+          "typeText": "String",
+          "modifiers": [
+            "private"
+          ],
+          "startLine": 8,
+          "endLine": 8,
+          "javadoc": {
+            "present": true,
+            "startLine": 4,
+            "endLine": 6,
+            "lineCount": 3,
+            "preview": null
+          }
+        }
+      ],
+      "constructors": [],
+      "methods": [
+        {
+          "symbolId": "Method#com.example.docs.JavadocWithAnnotation#doWork():void|start:13|end:14",
+          "kind": "method",
+          "name": "doWork",
+          "returnTypeText": "void",
+          "modifiers": [
+            "public"
+          ],
+          "typeParamsText": null,
+          "params": [],
+          "throws": [],
+          "startLine": 13,
+          "endLine": 14,
+          "javadoc": {
+            "present": true,
+            "startLine": 10,
+            "endLine": 12,
+            "lineCount": 3,
+            "preview": null
+          },
+          "signatureText": "@Deprecated public void doWork()"
+        }
+      ],
+      "innerClasses": []
+    }
+  ],
+  "errors": []
+}
