@@ -1,5 +1,44 @@
+# Python 가상환경
 .venv/
+venv/
+env/
+ENV/
+
+# Python 캐시 및 컴파일 파일
 __pycache__/
-.mcp-java-index-cache/
-.pytest_cache/
 *.pyc
+*.pyo
+*.pyd
+.Python
+
+# 테스트 및 커버리지
+.pytest_cache/
+.coverage
+htmlcov/
+.tox/
+
+# 애플리케이션 캐시
+.mcp-java-index-cache/
+
+# 빌드 아티팩트
+build/
+dist/
+*.egg-info/
+*.egg
+
+# IDE 설정
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS 파일
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# 임시 파일
+*.log
+*.tmp
+analysis.json
