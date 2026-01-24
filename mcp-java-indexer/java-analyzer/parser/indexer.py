@@ -121,6 +121,119 @@ def _extract_implements(node, source_bytes: bytes, kind: str) -> list[str]:
     return []
 
 
+def _extract_annotations_from_signature(signature_text: str) -> list[str]:
+    """
+    signatureText에서 어노테이션 추출
+
+    더 안정적이고 간단한 방법: 이미 생성된 signature에서 파싱
+
+    Args:
+        signature_text: 시그니처 텍스트 (예: "@Service @Transactional public class Foo")
+
+    Returns:
+        어노테이션 문자열 리스트 (예: ["@Service", "@Transactional"])
+    """
+    if not signature_text:
+        return []
+
+    annotations = []
+    tokens = signature_text.split()
+
+    i = 0
+    while i < len(tokens):
+        token = tokens[i]
+        if token.startswith("@"):
+            # 파라미터가 있는 어노테이션 처리: @MyAnno(value="x", flag=true)
+            if "(" in token:
+                # 같은 토큰 안에 닫는 괄호가 있으면 완성
+                if ")" in token:
+                    annotations.append(token)
+                    i += 1
+                else:
+                    # 여러 토큰에 걸쳐 있는 경우
+                    full_anno = token
+                    i += 1
+                    while i < len(tokens) and ")" not in tokens[i-1]:
+                        full_anno += " " + tokens[i]
+                        i += 1
+                        if ")" in tokens[i-1]:
+                            break
+                    annotations.append(full_anno)
+            else:
+                # 파라미터가 없는 단순 어노테이션
+                annotations.append(token)
+                i += 1
+        elif token in ["public", "private", "protected", "class", "interface", "enum", "record", "@interface", "static", "final", "abstract"]:
+            # 어노테이션 영역 종료
+            break
+        else:
+            i += 1
+
+    return annotations
+
+
+def _extract_annotations(node, source_bytes: bytes) -> list[str]:
+    """
+    AST에서 어노테이션 노드 추출
+
+    Args:
+        node: AST 노드 (클래스, 메서드, 필드 등)
+        source_bytes: 소스 코드 바이트
+
+    Returns:
+        어노테이션 문자열 리스트 (예: ["@Service", "@Transactional"])
+    """
+    annotations = []
+
+    # 모든 children과 named_children 탐색
+    for child in node.children:
+        if child.type == "marker_annotation":
+            # @Service, @Deprecated 등 (파라미터 없음)
+            name_node = child.child_by_field_name("name")
+            if name_node:
+                anno_name = "@" + node_text(source_bytes, name_node)
+                if anno_name not in annotations:
+                    annotations.append(anno_name)
+            else:
+                # name 필드가 없는 경우 전체 텍스트 사용
+                text = node_text(source_bytes, child).strip()
+                if text and text not in annotations:
+                    annotations.append(text)
+        elif child.type == "annotation":
+            # @RequestMapping("/api"), @MyAnno(value="x") 등 (파라미터 있음)
+            # 전체 어노테이션 텍스트 추출
+            full_text = node_text(source_bytes, child).strip()
+            # 멀티라인 어노테이션을 한 줄로
+            full_text = normalize_whitespace(full_text)
+            if full_text and full_text not in annotations:
+                annotations.append(full_text)
+        elif child.type == "modifiers":
+            # modifiers 노드 안에 어노테이션이 있을 수 있음
+            for mod_child in child.children:
+                if mod_child.type == "marker_annotation":
+                    name_node = mod_child.child_by_field_name("name")
+                    if name_node:
+                        anno_name = "@" + node_text(source_bytes, name_node)
+                        if anno_name not in annotations:
+                            annotations.append(anno_name)
+                    else:
+                        text = node_text(source_bytes, mod_child).strip()
+                        if text and text not in annotations:
+                            annotations.append(text)
+                elif mod_child.type == "annotation":
+                    full_text = node_text(source_bytes, mod_child).strip()
+                    full_text = normalize_whitespace(full_text)
+                    if full_text and full_text not in annotations:
+                        annotations.append(full_text)
+
+    # AST에서 추출 실패 시, signature에서 추출 시도
+    if not annotations:
+        # signature_text는 호출자가 생성하므로 여기서는 빈 리스트 반환
+        pass
+
+    return annotations
+
+
 def _type_text(node, source_bytes: bytes) -> str:
     if node is None:
         return ""
@@ -221,6 +334,9 @@ def _parse_field_declaration(
     type_node = node.child_by_field_name("type")
     type_text = _type_text(type_node, ctx.source_bytes)
 
+    # AST에서 어노테이션 추출 시도
+    annotations = _extract_annotations(node, ctx.source_bytes)
+
     anchor_line = modifier_anchor_line(node) or (node.start_point[0] + 1)
     javadoc = build_javadoc_dict(ctx.lines, anchor_line, options.get("maxJavadocPreviewChars", 0))
 
@@ -235,6 +351,13 @@ def _parse_field_declaration(
         start_line = child.start_point[0] + 1
         end_line = child.end_point[0] + 1
         symbol_id = _build_symbol_id("Field", qualified_name, name, start_line, end_line)
+
+        # signatureText 생성
+        sig_text = _signature_text(node, ctx.source_bytes)
+
+        # AST에서 추출 실패 시 signatureText에서 추출
+        field_annotations = annotations if annotations else _extract_annotations_from_signature(sig_text)
+
         fields.append(
             {
                 "symbolId": symbol_id,
@@ -242,6 +365,7 @@ def _parse_field_declaration(
                 "name": name,
                 "typeText": type_text,
                 "modifiers": modifiers,
+                "annotations": field_annotations,
                 "startLine": start_line,
                 "endLine": end_line,
                 "javadoc": javadoc,
@@ -269,17 +393,26 @@ def _parse_constructor_declaration(node, ctx: ParseContext, qualified_name: str)
     anchor_line = modifier_anchor_line(node) or start_line
     javadoc = build_javadoc_dict(ctx.lines, anchor_line, options.get("maxJavadocPreviewChars", 0))
 
+    # signatureText 생성
+    sig_text = _signature_text(node, ctx.source_bytes)
+
+    # AST에서 어노테이션 추출 시도, 실패 시 signatureText에서 추출
+    annotations = _extract_annotations(node, ctx.source_bytes)
+    if not annotations:
+        annotations = _extract_annotations_from_signature(sig_text)
+
     return {
         "symbolId": symbol_id,
         "kind": "constructor",
         "name": name,
         "modifiers": modifiers,
+        "annotations": annotations,
         "params": params,
         "throws": throws_list,
         "startLine": start_line,
         "endLine": end_line,
         "javadoc": javadoc,
-        "signatureText": _signature_text(node, ctx.source_bytes),
+        "signatureText": sig_text,
     }
 
 
@@ -319,19 +452,28 @@ def _parse_method_declaration(node, ctx: ParseContext, qualified_name: str) -> O
     anchor_line = modifier_anchor_line(node) or start_line
     javadoc = build_javadoc_dict(ctx.lines, anchor_line, options.get("maxJavadocPreviewChars", 0))
 
+    # signatureText 생성
+    sig_text = _signature_text(node, ctx.source_bytes)
+
+    # AST에서 어노테이션 추출 시도, 실패 시 signatureText에서 추출
+    annotations = _extract_annotations(node, ctx.source_bytes)
+    if not annotations:
+        annotations = _extract_annotations_from_signature(sig_text)
+
     return {
         "symbolId": symbol_id,
         "kind": "method",
         "name": name,
         "returnTypeText": return_type,
         "modifiers": modifiers,
+        "annotations": annotations,
         "typeParamsText": type_params_text,
         "params": params,
         "throws": throws_list,
         "startLine": start_line,
         "endLine": end_line,
         "javadoc": javadoc,
-        "signatureText": _signature_text(node, ctx.source_bytes),
+        "signatureText": sig_text,
     }
 
 
@@ -411,17 +553,27 @@ def _parse_class_declaration(node, ctx: ParseContext, outer_names: list[str]) ->
 
     symbol_id = _class_symbol_id(kind, qualified_name, start_line, end_line)
 
+    # signatureText 생성
+    sig_text = _signature_text(node, ctx.source_bytes)
+
+    # AST에서 어노테이션 추출 시도, 실패 시 signatureText에서 추출
+    annotations = _extract_annotations(node, ctx.source_bytes)
+    if not annotations:
+        annotations = _extract_annotations_from_signature(sig_text)
+
     return {
         "symbolId": symbol_id,
         "kind": kind,
         "name": name,
         "qualifiedName": qualified_name,
         "modifiers": modifiers,
+        "annotations": annotations,
         "extends": _extract_extends(node, ctx.source_bytes, kind),
         "implements": _extract_implements(node, ctx.source_bytes, kind),
         "startLine": start_line,
         "endLine": end_line,
         "javadoc": javadoc,
+        "signatureText": sig_text,
         "fields": body_data["fields"],
         "constructors": body_data["constructors"],
         "methods": body_data["methods"],

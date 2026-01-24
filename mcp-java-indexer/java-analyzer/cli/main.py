@@ -5,6 +5,7 @@ import json
 
 from parser.indexer import find_symbols, index_java_file
 from parser.readers import read_range
+from parser.formatters import format_ultra_compact, format_compact
 
 
 def _print_json(data: dict) -> None:
@@ -17,12 +18,45 @@ def main() -> None:
 
     index_parser = subparsers.add_parser("index", help="Index a Java file")
     index_parser.add_argument("file", help="Path to Java file")
-    index_parser.add_argument("--no-private", action="store_true", help="Exclude private symbols")
-    index_parser.add_argument("--no-fields", action="store_true", help="Exclude fields")
-    index_parser.add_argument("--no-inner", action="store_true", help="Exclude inner classes")
-    index_parser.add_argument("--no-constructors", action="store_true", help="Exclude constructors")
+
+    # 출력 모드 옵션
     index_parser.add_argument(
-        "--javadoc-preview-chars", type=int, default=0, help="Include Javadoc preview chars"
+        "--mode",
+        choices=["ultra", "compact", "full"],
+        default="ultra",
+        help="Output mode: ultra (minimal), compact (medium), full (detailed)"
+    )
+
+    # 필드 포함 옵션
+    index_parser.add_argument(
+        "--with-fields",
+        dest="with_fields",
+        action="store_true",
+        default=True,
+        help="Include field information (default: True)"
+    )
+    index_parser.add_argument(
+        "--no-fields-output",
+        dest="with_fields",
+        action="store_false",
+        help="Exclude field information from output"
+    )
+
+    # 접근 제한자 필터
+    index_parser.add_argument(
+        "--scope",
+        choices=["public", "protected", "private", "all"],
+        default="all",
+        help="Filter by access modifier (default: all)"
+    )
+
+    # 기존 옵션들 (full 모드에서 유효)
+    index_parser.add_argument("--no-private", action="store_true", help="Exclude private symbols (full mode)")
+    index_parser.add_argument("--no-fields", action="store_true", help="Exclude fields (full mode)")
+    index_parser.add_argument("--no-inner", action="store_true", help="Exclude inner classes (full mode)")
+    index_parser.add_argument("--no-constructors", action="store_true", help="Exclude constructors (full mode)")
+    index_parser.add_argument(
+        "--javadoc-preview-chars", type=int, default=0, help="Include Javadoc preview chars (full mode)"
     )
 
     range_parser = subparsers.add_parser("range", help="Read a range of lines")
@@ -42,14 +76,34 @@ def main() -> None:
     args = parser.parse_args()
 
     if args.command == "index":
-        options = {
+        # Full 모드 옵션 (먼저 full로 인덱싱)
+        full_options = {
             "includePrivate": not args.no_private,
             "includeFields": not args.no_fields,
             "includeInnerClasses": not args.no_inner,
             "includeConstructors": not args.no_constructors,
             "maxJavadocPreviewChars": args.javadoc_preview_chars,
         }
-        result = index_java_file(args.file, options)
+
+        # 먼저 full 모드로 인덱싱
+        full_result = index_java_file(args.file, full_options)
+
+        # 모드에 따라 포맷팅
+        if args.mode == "ultra":
+            format_options = {
+                "with_fields": args.with_fields,
+                "scope": args.scope
+            }
+            result = format_ultra_compact(full_result, format_options)
+        elif args.mode == "compact":
+            format_options = {
+                "with_fields": args.with_fields,
+                "scope": args.scope
+            }
+            result = format_compact(full_result, format_options)
+        else:  # full
+            result = full_result
+
         _print_json(result)
         return
 

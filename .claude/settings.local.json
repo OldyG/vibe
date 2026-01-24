@@ -1,0 +1,9 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(.....venvScriptspython -m cli.main index testsfixturesSimpleClass.java --mode ultra)",
+      "Bash(python -m cli.main:*)",
+      "Bash(python:*)"
+    ]
+  }
+}
