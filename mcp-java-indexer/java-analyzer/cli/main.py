@@ -3,7 +3,8 @@ from __future__ import annotations
 import argparse
 import json
 
-from mcp_server import handlers
+from parser.indexer import find_symbols, index_java_file
+from parser.readers import read_range
 
 
 def _print_json(data: dict) -> None:
@@ -11,7 +12,7 @@ def _print_json(data: dict) -> None:
 
 
 def main() -> None:
-    parser = argparse.ArgumentParser(prog="mcp-java-index")
+    parser = argparse.ArgumentParser(prog="java-analyzer")
     subparsers = parser.add_subparsers(dest="command", required=True)
 
     index_parser = subparsers.add_parser("index", help="Index a Java file")
@@ -48,7 +49,7 @@ def main() -> None:
             "includeConstructors": not args.no_constructors,
             "maxJavadocPreviewChars": args.javadoc_preview_chars,
         }
-        result = handlers.java_index(args.file, options)
+        result = index_java_file(args.file, options)
         _print_json(result)
         return
 
@@ -57,7 +58,7 @@ def main() -> None:
             "includeLineNumbers": not args.no_line_numbers,
             "maxChars": args.max_chars,
         }
-        result = handlers.java_read_range(args.file, args.start, args.end, options)
+        result = read_range(args.file, args.start, args.end, options)
         _print_json(result)
         return
 
@@ -67,10 +68,11 @@ def main() -> None:
             "maxResults": args.max_results,
             "caseSensitive": args.case_sensitive,
         }
-        result = handlers.java_find_symbol(args.root, args.query, options)
+        result = find_symbols(args.root, args.query, options)
         _print_json(result)
         return
 
 
 if __name__ == "__main__":
     main()
+

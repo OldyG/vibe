@@ -2,9 +2,9 @@ from __future__ import annotations
 
 from typing import Optional
 
-from cache.cache_store import default_cache_store
-from parser.indexer import find_symbols, index_java_file
-from parser.readers import read_javadoc, read_range
+from java_analyzer.cache.cache_store import default_cache_store
+from java_analyzer.parser.indexer import find_symbols, index_java_file
+from java_analyzer.parser.readers import read_javadoc, read_range
 
 
 _CACHE = default_cache_store()
