@@ -55,6 +55,7 @@ Purpose: Return a symbol outline for a given Java file.
   - stableIds: boolean (default true; symbolId should be stable across re-index unless code changes)
 
 #### Output (JSON)
+```json
 {
   "filePath": "...",
   "language": "java",
@@ -132,7 +133,7 @@ Purpose: Return a symbol outline for a given Java file.
     {"level":"warning|error", "message":"...", "line": 123 | null}
   ]
 }
-
+```
 Rules:
 - startLine/endLine are 1-based.
 - signatureText must be best-effort, human-readable.
@@ -152,13 +153,14 @@ Purpose: Return specific lines for minimal token reading.
   - maxChars: number (default 20000; hard cap to prevent huge responses)
 
 #### Output
+```json
 {
   "filePath":"...",
   "startLine": 70,
   "endLine": 120,
   "content": "70: ...\n71: ...\n..."
 }
-
+```
 Rules:
 - Must validate bounds.
 - Must hard-cap output (truncate gracefully with a message).
@@ -174,6 +176,7 @@ Purpose: Retrieve only the Javadoc block for a symbolId.
   - maxChars: number (default 8000)
 
 #### Output
+```json
 {
   "filePath":"...",
   "symbolId":"...",
@@ -183,7 +186,7 @@ Purpose: Retrieve only the Javadoc block for a symbolId.
   "lineCount": 4,
   "content": "66: /** ... */" | ""
 }
-
+```
 Rules:
 - If not found or no javadoc: found=false, content="".
 
@@ -199,6 +202,7 @@ Purpose: Find symbol candidates by name pattern in a directory.
   - caseSensitive: boolean (default false)
 
 #### Output
+```json
 {
   "rootDir":"...",
   "query":"...",
@@ -214,7 +218,7 @@ Purpose: Find symbol candidates by name pattern in a directory.
     }
   ]
 }
-
+```
 Implementation note:
 - This tool may use cached indexes. If index missing, generate on demand.
 

@@ -282,6 +282,6 @@ if cached_hash != current_hash:
 
 ## 참고 자료
 
-- [MCP 사양](MCP_JAVA_INDEXER.md) - 원본 사양 문서
+- [MCP 사양](../GENERATE_PROMPT.md) - 원본 사양 문서
 - [Tree-sitter Java](https://github.com/tree-sitter/tree-sitter-java) - Java 문법
 - [Model Context Protocol](https://modelcontextprotocol.io/) - MCP 공식 문서

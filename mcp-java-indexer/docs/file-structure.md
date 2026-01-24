@@ -5,42 +5,41 @@ MCP Java Indexer의 전체 파일 구조와 각 파일의 역할을 상세히 �
 ## 📂 전체 디렉토리 구조
 
 ```
-mcp-java-indexer/
-├── mcp-java-indexer/          # 메인 소스 코드
-│   ├── parser/                # 파싱 엔진
-│   │   ├── __init__.py
-│   │   ├── indexer.py         # 메인 인덱싱 로직
-│   │   ├── ast_utils.py       # AST 유틸리티
-│   │   ├── javadoc.py         # Javadoc 탐지
-│   │   └── readers.py         # 파일 I/O
-│   ├── cache/                 # 캐싱 레이어
-│   │   ├── __init__.py
-│   │   └── cache_store.py     # 캐시 스토어
-│   ├── mcp_server/            # MCP 서버
-│   │   ├── __init__.py
-│   │   ├── server.py          # 서버 설정
-│   │   └── handlers.py        # 요청 핸들러
-│   ├── cli/                   # CLI 도구
-│   │   ├── __init__.py
-│   │   └── main.py            # CLI 구현
-│   └── tests/                 # 테스트
-│       ├── conftest.py        # pytest 설정
-│       ├── test_indexer.py    # 인덱서 테스트
-│       ├── test_javadoc.py    # Javadoc 테스트
-│       ├── test_read_range.py # 범위 읽기 테스트
-│       ├── test_snapshots.py  # 스냅샷 테스트
-│       ├── fixtures/          # 테스트 픽스처
-│       │   ├── SimpleClass.java
-│       │   ├── NestedClasses.java
-│       │   ├── RecordEnumInterface.java
-│       │   ├── JavadocSamples.java
-│       │   ├── JavadocWithAnnotations.java
-│       │   ├── MethodOverloads.java
-│       │   ├── GenericMethods.java
-│       │   └── InnerClassMethods.java
-│       └── expected/          # 예상 출력
-│           ├── SimpleClass.json
-│           └── ...
+mcp-java-indexer/ # 메인 소스 코드
+│── parser/                # 파싱 엔진
+│   ├── __init__.py
+│   ├── indexer.py         # 메인 인덱싱 로직
+│   ├── ast_utils.py       # AST 유틸리티
+│   ├── javadoc.py         # Javadoc 탐지
+│   └── readers.py         # 파일 I/O
+│── cache/                 # 캐싱 레이어
+│   ├── __init__.py
+│   └── cache_store.py     # 캐시 스토어
+│── mcp_server/            # MCP 서버
+│   ├── __init__.py
+│   ├── server.py          # 서버 설정
+│   └── handlers.py        # 요청 핸들러
+│── cli/                   # CLI 도구
+│   ├── __init__.py
+│   └── main.py            # CLI 구현
+│── tests/                 # 테스트
+│   ├── conftest.py        # pytest 설정
+│   ├── test_indexer.py    # 인덱서 테스트
+│   ├── test_javadoc.py    # Javadoc 테스트
+│   ├── test_read_range.py # 범위 읽기 테스트
+│   ├── test_snapshots.py  # 스냅샷 테스트
+│   ├── fixtures/          # 테스트 픽스처
+│   │   ├── SimpleClass.java
+│   │   ├── NestedClasses.java
+│   │   ├── RecordEnumInterface.java
+│   │   ├── JavadocSamples.java
+│   │   ├── JavadocWithAnnotations.java
+│   │   ├── MethodOverloads.java
+│   │   ├── GenericMethods.java
+│   │   └── InnerClassMethods.java
+│   └── expected/          # 예상 출력
+│       ├── SimpleClass.json
+│       └── ...
 ├── docs/                      # 문서 (이 폴더)
 │   ├── README.md
 │   ├── architecture.md
