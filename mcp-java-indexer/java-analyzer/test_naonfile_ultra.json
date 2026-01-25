@@ -1,0 +1,65 @@
+{
+  "file": "NaonFile.java",
+  "lines": 1147,
+  "classes": [
+    {
+      "name": "NaonFile",
+      "annotations": [
+        "@Slf4j"
+      ],
+      "range": [
+        58,
+        1147
+      ],
+      "methods": [
+        "from(File) [138-143]",
+        "from(URI) [147-152]",
+        "from(URL) [154-159]",
+        "from(NaonDirectory, String, String) [161-166]",
+        "getFileName(String, String) [168-174]",
+        "getFileLock() [176-182]",
+        "getFileName() [184-192]",
+        "getBaseName() [194-201]",
+        "getExtension() [203-211]",
+        "getDirectory() [213-219]",
+        "getMimeType() [221-227]",
+        "reader() [229-234]",
+        "writer() [236-242]",
+        "peek(Consumer<NaonFile>) [244-272]",
+        "mkdirs() [274-282]",
+        "renameBaseName(String) [284-309]",
+        "renameFileName(String) [311-333]",
+        "renameFileName(FileNaming) [335-341]",
+        "length() [343-349]",
+        "delete() [351-358]",
+        "equals(Object) [360-381]",
+        "inputStream(OpenOption...) [383-392]",
+        "outputStream(OpenOption...) [394-403]",
+        "createNewFile() [405-431]",
+        "moveTo(NaonDirectory) [433-447]",
+        "moveTo(NaonFile) [449-482]",
+        "copyTo(NaonDirectory) [484-498]",
+        "copyTo(NaonFile) [500-512]",
+        "copyTo(NaonFile, CopyOption...) [514-547]",
+        "compareTo(NaonFile) [549-565]",
+        "getFileUrl() [567-576]",
+        "map(Function<? super NaonFile, ? extends R>) [578-588]",
+        "mapEmbeded(Function<? super File, ? extends R>) [590-600]",
+        "getSiblingFile(String, String) [602-612]",
+        "getSiblingFile(String) [614-623]",
+        "iterator() [625-634]",
+        "toOptional() [636-660]",
+        "createLink(NaonFile) [662-692]",
+        "createLink(NaonDirectory) [694-704]",
+        "contains(NaonDirectory) [706-714]"
+      ],
+      "fields": [
+        "Charset DEFAULT_CHARSET",
+        "long serialVersionUID",
+        "Map<Path, Object> FILE_LOCKS",
+        "String baseName",
+        "String extension"
+      ]
+    }
+  ]
+}

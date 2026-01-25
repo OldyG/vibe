@@ -1,0 +1,163 @@
+{
+  "file": "EmlLabelPropertyService.java",
+  "lines": 272,
+  "classes": [
+    {
+      "name": "EmlLabelPropertyService",
+      "annotations": [
+        "@Slf4j",
+        "@Service",
+        "@RequiredArgsConstructor"
+      ],
+      "range": [
+        30,
+        272
+      ],
+      "doc": "",
+      "methods": [
+        {
+          "id": "53",
+          "name": "selectDetailByMailUser",
+          "sig": "public LabelPropertyDetailDto selectDetailByMailUser(@NonNull MailUser mailUser)",
+          "range": [
+            53,
+            69
+          ],
+          "doc": ""
+        },
+        {
+          "id": "71",
+          "name": "buildLabelRuleDetail",
+          "sig": "private LabelRuleDetail buildLabelRuleDetail(@NonNull LabelRule rule, @NonNull List<EmlLabelBean> allLabels)",
+          "range": [
+            71,
+            80
+          ],
+          "doc": ""
+        },
+        {
+          "id": "82",
+          "name": "changeRuleOrder",
+          "sig": "@Transactional public List<LabelRule> changeRuleOrder(@NonNull MailUser mailUser, @NonNull List<String> ruleIds)",
+          "range": [
+            82,
+            93
+          ],
+          "doc": ""
+        },
+        {
+          "id": "95",
+          "name": "saveLabelConfig",
+          "sig": "@Transactional public void saveLabelConfig(@NonNull MailUser mailUser, @NonNull String useYn)",
+          "range": [
+            95,
+            108
+          ],
+          "doc": ""
+        },
+        {
+          "id": "110",
+          "name": "saveLabelRule",
+          "sig": "@Transactional public LabelRule saveLabelRule(@NonNull MailUser mailUser, @NonNull LabelRule labelRule)",
+          "range": [
+            110,
+            122
+          ],
+          "doc": ""
+        },
+        {
+          "id": "126",
+          "name": "deleteLabelRule",
+          "sig": "@Transactional public void deleteLabelRule(@NonNull MailUser mailUser, @NonNull String ruleId)",
+          "range": [
+            126,
+            137
+          ],
+          "doc": ""
+        },
+        {
+          "id": "141",
+          "name": "removeDeletedLabelFromRules",
+          "sig": "private List<LabelRule> removeDeletedLabelFromRules(@NonNull List<LabelRule> rules, @NonNull String deletedLabelId)",
+          "range": [
+            141,
+            149
+          ],
+          "doc": ""
+        },
+        {
+          "id": "151",
+          "name": "removeDeletedLabelFromRule",
+          "sig": "private LabelRule removeDeletedLabelFromRule(@NonNull LabelRule rule, @NonNull String deletedLabelId)",
+          "range": [
+            151,
+            161
+          ],
+          "doc": ""
+        },
+        {
+          "id": "163",
+          "name": "isRulesChanged",
+          "sig": "private boolean isRulesChanged(@NonNull List<LabelRule> beforeRules, @NonNull List<LabelRule> afterRules)",
+          "range": [
+            163,
+            188
+          ],
+          "doc": ""
+        },
+        {
+          "id": "190",
+          "name": "onDeleteLabelEvent",
+          "sig": "@EventListener public void onDeleteLabelEvent(LabelEvent.onDelete event)",
+          "range": [
+            190,
+            215
+          ],
+          "doc": ""
+        },
+        {
+          "id": "217",
+          "name": "selectLabelProperty",
+          "sig": "private LabelProperty selectLabelProperty(@NonNull MailUser mailUser)",
+          "range": [
+            217,
+            222
+          ],
+          "doc": ""
+        },
+        {
+          "id": "224",
+          "name": "selectLabelPropertyByEmail",
+          "sig": "private LabelProperty selectLabelPropertyByEmail(@NonNull String email)",
+          "range": [
+            224,
+            229
+          ],
+          "doc": ""
+        },
+        {
+          "id": "231",
+          "name": "saveLabelProperty",
+          "sig": "private void saveLabelProperty(@NonNull String email, @NonNull LabelProperty labelProperty)",
+          "range": [
+            231,
+            236
+          ],
+          "doc": ""
+        }
+      ],
+      "fields": [
+        {
+          "name": "labelRuleSupporter",
+          "sig": "private final LabelRuleSupporter labelRuleSupporter",
+          "doc": ""
+        },
+        {
+          "name": "emlLabelMapper",
+          "sig": "private final EmlLabelMapper emlLabelMapper",
+          "doc": ""
+        }
+      ]
+    }
+  ]
+}

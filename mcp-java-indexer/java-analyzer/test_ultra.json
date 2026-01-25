@@ -1,0 +1,37 @@
+{
+  "file": "EmlLabelPropertyService.java",
+  "lines": 272,
+  "classes": [
+    {
+      "name": "EmlLabelPropertyService",
+      "annotations": [
+        "@Slf4j",
+        "@Service",
+        "@RequiredArgsConstructor"
+      ],
+      "range": [
+        30,
+        272
+      ],
+      "methods": [
+        "selectDetailByMailUser(MailUser) [53-69]",
+        "buildLabelRuleDetail(LabelRule, List<EmlLabelBean>) [71-80]",
+        "changeRuleOrder(MailUser, List<String>) [82-93]",
+        "saveLabelConfig(MailUser, String) [95-108]",
+        "saveLabelRule(MailUser, LabelRule) [110-122]",
+        "deleteLabelRule(MailUser, String) [126-137]",
+        "removeDeletedLabelFromRules(List<LabelRule>, String) [141-149]",
+        "removeDeletedLabelFromRule(LabelRule, String) [151-161]",
+        "isRulesChanged(List<LabelRule>, List<LabelRule>) [163-188]",
+        "onDeleteLabelEvent(LabelEvent.onDelete) [190-215]",
+        "selectLabelProperty(MailUser) [217-222]",
+        "selectLabelPropertyByEmail(String) [224-229]",
+        "saveLabelProperty(String, LabelProperty) [231-236]"
+      ],
+      "fields": [
+        "LabelRuleSupporter labelRuleSupporter",
+        "EmlLabelMapper emlLabelMapper"
+      ]
+    }
+  ]
+}
